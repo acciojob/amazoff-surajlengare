@@ -1,7 +1,7 @@
 package com.driver;
 
-public class DeliveryPartner {
-
+public class DeliveryPartner
+{
     private String id;
     private int numberOfOrders;
 
