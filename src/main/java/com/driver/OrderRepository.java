@@ -61,7 +61,7 @@ public class OrderRepository
     {
         if ( !orderMap.containsKey(orderId))
         {
-            return null;
+            return new Order("-1", "0");
         }
         return orderMap.get(orderId);
     }
@@ -70,7 +70,7 @@ public class OrderRepository
     {
         if ( !partnerMap.containsKey(partnerId))
         {
-            return null;
+            return new DeliveryPartner("-1");
         }
         return partnerMap.get(partnerId);
     }
@@ -88,7 +88,7 @@ public class OrderRepository
     {
         if ( !partnerOrderListMap.containsKey(partnerId))
         {
-           return null;
+           return new ArrayList<>();
         }
 
         HashSet<String> orderList = partnerOrderListMap.get(partnerId);
