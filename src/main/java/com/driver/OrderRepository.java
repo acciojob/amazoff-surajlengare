@@ -7,17 +7,17 @@ import java.util.*;
 @Repository
 public class OrderRepository
 {
-    private Map<String, Order> orderMap = new HashMap<>();
-    private Map<String, DeliveryPartner> partnerMap = new HashMap<>();
-    private Map<String, String> orderPartnerMap = new HashMap<>();
-    private Map<String, HashSet<String>> partnerOrderListMap = new HashMap<>();
+    private Map<String, Order> orderMap;
+    private Map<String, DeliveryPartner> partnerMap;
+    private Map<String, String> orderPartnerMap;
+    private Map<String, HashSet<String>> partnerOrderListMap;
 
-   /* public OrderRepository() {
+    public OrderRepository() {
         this.orderMap = new HashMap<>();
         this.partnerMap = new HashMap<>();
         this.orderPartnerMap = new HashMap<>();
         this.partnerOrderListMap = new HashMap<>();
-    }*/
+    }
 
 
     public void addOrder(Order order)
@@ -59,16 +59,28 @@ public class OrderRepository
 
     public Order getOrderById(String orderId)
     {
+        if ( !orderMap.containsKey(orderId))
+        {
+            return null;
+        }
         return orderMap.get(orderId);
     }
 
     public DeliveryPartner getPartnerById(String partnerId)
     {
+        if ( !partnerMap.containsKey(partnerId))
+        {
+            return null;
+        }
         return partnerMap.get(partnerId);
     }
 
     public int getOrderCountByPartnerId(String partnerId)
     {
+        if ( !partnerOrderListMap.containsKey(partnerId))
+        {
+            return 0;
+        }
         return partnerOrderListMap.get(partnerId).size();
     }
 
